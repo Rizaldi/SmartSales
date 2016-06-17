@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#e4e4e4"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Goods Return"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:id="@+id/tvRs"
+                                android:text="Return Status"
+                                android:textStyle="bold" />
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <RadioGroup
+                                        android:id="@+id/GRreturnstatus"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:drawSelectorOnTop="true">
+                                    <RadioButton
+                                        android:layout_width="wrap_content"
+                                        android:text="From Customer"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/f_customer"
+                                        android:checked="false" />
+                                    <RadioButton
+                                        android:layout_width="wrap_content"
+                                        android:text="To Warehouse"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentTop="true"
+                                        android:id="@+id/t_warehouse"
+                                        android:layout_toRightOf="@+id/f_customer"
+                                        android:layout_toEndOf="@+id/f_customer"
+                                        android:checked="false" />
+
+                            </RadioGroup>
+                                </RelativeLayout>
+
+                            <android.support.v7.widget.CardView
+                                android:id="@+id/div"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:padding="10dp">
+
+                                    <Spinner
+                                        android:id="@+id/GRcustomername"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:drawablePadding="10dp"
+                                        android:hint="Input quantity"
+                                        android:inputType="number"
+                                        android:drawableLeft="@drawable/quantity"
+                                        android:src="@drawable/approval"
+                                        android:layout_below="@+id/textView3"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_alignLeft="@+id/UOMspinner"
+                                        android:layout_alignStart="@+id/UOMspinner" />
+
+                                    <TextView
+                                        android:id="@+id/date"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginTop="5dp"
+                                        android:layout_toRightOf="@+id/GRcustomername"
+                                        android:textSize="15sp"
+                                        android:textStyle="bold" />
+
+                                    <Spinner
+                                        android:layout_width="match_parent"
+                                        android:id="@+id/GRcustomeraddress"
+                                        android:layout_height="wrap_content"
+                                        android:drawSelectorOnTop="true"
+                                        android:layout_below="@+id/textView4"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_alignParentStart="true" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Customer Name"
+                                        android:textStyle="bold"
+                                        android:id="@+id/textView3"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_alignParentStart="true" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Customer Address"
+                                        android:textStyle="bold"
+                                        android:layout_below="@+id/GRcustomername"
+                                        android:id="@+id/textView4"
+                                        android:layout_centerVertical="true"
+                                        android:layout_alignParentLeft="true"
+                                        android:layout_alignParentStart="true" />
+
+                                </RelativeLayout>
+
+                            </android.support.v7.widget.CardView>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:text="Collect Status"
+                                android:visibility="gone"
+                                android:textStyle="bold"
+                                android:id="@+id/textView5" />
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" >
+                                <RadioGroup
+                                    android:layout_width="match_parent"
+                                    android:id="@+id/GRcollectstatus"
+                                    android:visibility="gone"
+                                    android:layout_height="wrap_content">
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:text="Self Collect"
+                                    android:layout_height="wrap_content"
+                                    android:id="@+id/self"
+                                    android:checked="false" />
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:text="Driver Collect"
+                                    android:id="@+id/driver"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentTop="true"
+                                    android:layout_toRightOf="@+id/self"
+                                    android:layout_toEndOf="@+id/self"
+                                    android:checked="false" />
+                                </RadioGroup>
+                            </RelativeLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="20dp"
+                                android:text=" "
+                                android:textStyle="bold" />
+
+                            <Button
+                                android:id="@+id/csfsave"
+                                android:layout_width="90dp"
+                                android:layout_height="70dp"
+                                android:layout_gravity="right"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/bgsubmit"
+                                android:padding="10dp"
+                                android:text="Next"
+                                android:textColor="#FFF"
+                                android:drawableRight="@drawable/next"
+                                />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+            </LinearLayout>
+            <!--<LinearLayout-->
+                <!--android:padding="10dp"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="#f1f1f1"-->
+                <!--android:orientation="vertical">-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="15dp"-->
+                    <!--android:text="List product"-->
+                    <!--android:textStyle="bold" />-->
+
+                <!--<View-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="2px"-->
+                    <!--android:background="#000" />-->
+                <!--<LinearLayout-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content">-->
+                    <!--<ImageView-->
+                        <!--android:layout_width="30dp"-->
+                        <!--android:layout_height="30dp"-->
+                        <!--android:layout_alignParentLeft="true"-->
+                        <!--android:layout_alignParentTop="true"-->
+                        <!--android:layout_marginRight="16dp"-->
+                        <!--android:padding="3dp"-->
+                        <!--android:src="@drawable/approval" />-->
+                    <!--<TextView-->
+                        <!--android:textStyle="bold"-->
+                        <!--android:id="@+id/tgl_list"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content" />-->
+
+                <!--</LinearLayout>-->
+                <!--<android.support.v7.widget.RecyclerView-->
+                    <!--android:id="@+id/rvproduct"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="400dp"-->
+                    <!--android:layout_marginTop="10dp" />-->
+
+            <!--</LinearLayout>-->
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

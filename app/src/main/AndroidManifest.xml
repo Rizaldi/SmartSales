@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="smartsales.rizaldi.com.smartsales">
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="15" />
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".session.AppController"
+        android:allowBackup="true"
+        android:icon="@drawable/tas"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".SplashActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Approval.Itinerary"
+            android:label="@string/title_activity_main"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Approval.Approval"
+            android:label="@string/title_activity_main"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Approval.IteneraryInput"
+            android:label="@string/title_activity_main"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Sales.Tracking.Tracking"
+            android:label="@string/title_activity_main"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Approval.ItineraryAdd"
+            android:label="@string/title_activity_main"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!--
+             ATTENTION: This was auto-generated to add Google Play services to your project for
+             App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
+        -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".Sales.Tracking.MapsTracking"
+            android:label="@string/title_activity_maps_tracking"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CustomerVisit.CustomerVisit"
+            android:label="@string/title_activity_customer_visit"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CustomerVisit.CheckInOut"
+            android:label="@string/title_activity_check_in_out"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CustomerVisit.SelectDate"
+            android:label="@string/title_activity_check_in_out"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Sales.Sales"
+            android:label="@string/title_activity_sales"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CustomerVisit.VisitVanSeles"
+            android:label="@string/title_activity_visit_van_seles"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Sales.reffill_van.RefillVan"
+            android:label="@string/title_activity_reffil_van"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Sales.good_return.GoodsReturn"
+            android:label="@string/title_activity_goods_return"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".customerorder.C_Order_form"
+            android:label="@string/title_activity_c__order_form"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".customerorder.BrowseProduct"
+            android:label="@string/title_activity_browse_product"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".customerorder.InputOrderForm"
+            android:label="@string/title_activity_input_order_form"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".customerorder.Payment"
+            android:label="@string/title_activity_payment"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Sales.Propose.Payment"
+            android:label="@string/title_activity_payment"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Approval.approvalso.ApprovalSo"
+            android:label="@string/title_activity_approval_so"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Approval.approvalso.ListApprovalSales"
+            android:label="@string/title_activity_list_approval_sales"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Report.ActivityReport"
+            android:label="@string/title_activity_activity_report"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Report.transaction.Transactionreport"
+            android:label="@string/title_activity_transactionreport"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Report.transaction.DetailTransaction"
+            android:label="@string/title_activity_detail_transaction"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Report.topcustomer.Topcustomer"
+            android:label="@string/title_activity_topcustomer"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Report.goodreturn.ReportGoodReturn"
+            android:label="@string/title_activity_report_good_return"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".dashboard.DashboardSales"
+            android:label="@string/title_activity_dashboard_sales"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".dashboard.MenuSales"
+            android:label="@string/title_activity_menu_sales"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".dashboard.MenuStock"
+            android:label="@string/title_activity_menu_stock"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".dashboard.MenuReport"
+            android:label="@string/title_activity_menu_report"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".dashboard.MenuApproval"
+            android:label="@string/title_activity_menu_approval"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".dashboard.MenuManager"
+            android:label="@string/title_activity_menu_manager"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".dashboard.MenuReportManager"
+            android:label="@string/title_activity_menu_report_manager"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Sales.competitor.CompetitorActivity"
+            android:label="@string/title_activity_competitor"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Sales.competitor.AddCompetitor"
+            android:label="@string/title_activity_add_competitor"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Sales.salestarget.Salestarget"
+            android:label="@string/title_activity_salestarget"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".stock.StockBalance"
+            android:label="@string/title_activity_stock_balance"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Sales.Propose.ProposeSalesOrder"
+            android:label="@string/title_activity_propose_sales_order"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Report.proposeso.ProposeSo"
+            android:label="@string/title_activity_propose_so"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Report.proposeso.DetailPropose"
+            android:label="@string/title_activity_detail_propose"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Report.goodreturn.Productlist"
+            android:label="@string/title_activity_productlist"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Report.refilvan.Refillvan"
+            android:label="@string/title_activity_refillvan"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Report.refilvan.Detailrefill"
+            android:label="@string/title_activity_detailrefill"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Approval.refillvan.RefillRequest"
+            android:label="@string/title_activity_refill_request"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Sales.Propose.InputOrderForm"
+            android:label="@string/title_activity_input_order_form"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Sales.Propose.BrowseProduct"
+            android:label="@string/title_activity_browse_product"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Approval.refillvan.ApproveDetailrefill"
+            android:label="@string/title_activity_approve_detailrefill"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Approval.goodreturn.Goodreturnapprove"
+            android:label="@string/title_activity_goodreturnapprove"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Approval.goodreturn.GoodreturnDetail"
+            android:label="@string/title_activity_goodreturn_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".stock.CustomerStock"
+            android:label="@string/title_activity_customer_stock"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Report.customeraging.CustomerAging"
+            android:label="@string/title_activity_customer_aging"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Report.customeraging.DetailCustomeraging"
+            android:label="@string/title_activity_detail_customeraging"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Report.efectivecall.EffectiveCalls"
+            android:label="@string/title_activity_effective_calls"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".customerorder.InputQuantity"
+            android:label="@string/title_activity_input_quantity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".customerorder.OrderedProductList"
+            android:label="@string/title_activity_ordered_product_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Report.efectivecall.EfectiveDetail"
+            android:label="@string/title_activity_efective_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Sales.Propose.InputQuantityPropose"
+            android:label="@string/title_activity_efective_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Sales.Propose.OrderedProductListPropost"
+            android:label="@string/title_activity_efective_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+    </application>
+
+</manifest>

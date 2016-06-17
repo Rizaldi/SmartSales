@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#EEE"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="smartsales.rizaldi.com.smartsales.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView" >
+
+        <RelativeLayout
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_alignParentTop="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#fafafa"
+                android:id="@+id/approval"
+                android:text="Approval"
+                android:padding="30dp"
+                android:textColor="#90C653"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:drawablePadding="20dp"
+                android:drawableTop="@drawable/aprove" />
+            <Button
+                android:id="@+id/mark1"
+                android:layout_toRightOf="@id/approval"
+                android:background="@null"
+                android:layout_width="25dp"
+                android:layout_height="wrap_content" />
+            <Button
+                android:layout_toRightOf="@id/mark1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/sales"
+                android:text="Sales"
+                android:layout_alignParentTop="true"
+                android:padding="30dp"
+                android:textColor="#90C653"
+                android:drawablePadding="20dp"
+                android:drawableTop="@drawable/visitor"
+                android:background="#fafafa"
+                />
+            <Button
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/approval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#fafafa"
+                android:id="@+id/stock"
+                android:text="Stock"
+                android:padding="30dp"
+                android:textColor="#90C653"
+                android:drawablePadding="20dp"
+                android:drawableTop="@drawable/stock"
+                />
+            <Button
+                android:id="@+id/mark2"
+                android:layout_toRightOf="@id/stock"
+                android:background="@null"
+                android:layout_width="25dp"
+                android:layout_height="wrap_content" />
+
+
+            <Button
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/sales"
+                android:layout_toRightOf="@id/mark2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/report"
+                android:text="Report"
+                android:padding="30dp"
+                android:textColor="#90C653"
+                android:drawablePadding="20dp"
+                android:drawableTop="@drawable/menu_report"
+                android:background="#fafafa"
+                />
+
+            <Button
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/stock"
+                android:layout_width="124dp"
+                android:layout_height="wrap_content"
+                android:background="#fafafa"
+                android:id="@+id/customer_visit"
+                android:text="Customer Visit"
+                android:padding="30dp"
+                android:textColor="#90C653"
+                android:drawablePadding="20dp"
+                android:drawableTop="@drawable/visitor"
+                />
+            <Button
+                android:id="@+id/mark3"
+                android:layout_toRightOf="@id/customer_visit"
+                android:background="@null"
+                android:layout_width="15dp"
+                android:layout_height="wrap_content" />
+            <Button
+                android:layout_toRightOf="@id/mark3"
+                android:layout_width="124dp"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:padding="30dp"
+                />
+
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>
