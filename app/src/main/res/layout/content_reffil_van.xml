@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -12,10 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -30,170 +26,151 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
-                        <LinearLayout
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/div"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
+                            android:layout_marginTop="5dp">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="ITINERARY"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
-                                android:text="Product name"
-                                android:textStyle="bold" />
-
-                            <Spinner
-                                android:id="@+id/productspinner"
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:drawSelectorOnTop="true" />
+                                android:orientation="vertical"
+                                android:padding="16dp">
 
-                            <android.support.v7.widget.CardView
-                                android:id="@+id/div"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="5dp">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="15dp"
+                                    android:text="Product name"
+                                    android:textStyle="bold" />
 
-                                <RelativeLayout
+                                <Spinner
+                                    android:id="@+id/productspinner"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:padding="10dp">
+                                    android:drawSelectorOnTop="true" />
 
-                                    <EditText
-                                        android:id="@+id/qty"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:drawablePadding="10dp"
-                                        android:hint="Input quantity"
-                                        android:inputType="number"
-                                        android:drawableLeft="@drawable/quantity"
-                                        android:src="@drawable/approval"
-                                        android:layout_below="@+id/textView3"
-                                        android:layout_alignParentRight="true"
-                                        android:layout_alignParentEnd="true"
-                                        android:layout_alignLeft="@+id/UOMspinner"
-                                        android:layout_alignStart="@+id/UOMspinner" />
+                                <android.support.v7.widget.CardView
+                                    android:id="@+id/div2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp">
 
-                                    <TextView
-                                        android:id="@+id/date"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="10dp"
-                                        android:layout_marginTop="5dp"
-                                        android:layout_toRightOf="@+id/qty"
-                                        android:textSize="15sp"
-                                        android:textStyle="bold" />
-
-                                    <Spinner
+                                    <RelativeLayout
                                         android:layout_width="match_parent"
-                                        android:id="@+id/UOMspinner"
                                         android:layout_height="wrap_content"
-                                        android:drawSelectorOnTop="true"
-                                        android:layout_below="@+id/textView4"
-                                        android:layout_alignParentLeft="true"
-                                        android:layout_alignParentStart="true" />
+                                        android:padding="10dp">
 
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="Quantity"
-                                        android:textStyle="bold"
-                                        android:id="@+id/textView3"
-                                        android:layout_alignParentTop="true"
-                                        android:layout_alignParentLeft="true"
-                                        android:layout_alignParentStart="true" />
+                                        <EditText
+                                            android:id="@+id/qty"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignLeft="@+id/UOMspinner"
+                                            android:layout_alignParentEnd="true"
+                                            android:layout_alignParentRight="true"
+                                            android:layout_alignStart="@+id/UOMspinner"
+                                            android:layout_below="@+id/textView3"
+                                            android:drawableLeft="@drawable/quantity"
+                                            android:drawablePadding="10dp"
+                                            android:hint="Input quantity"
+                                            android:inputType="number"
+                                            android:src="@drawable/approval" />
 
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="UOM"
-                                        android:textStyle="bold"
-                                        android:layout_below="@+id/qty"
-                                        android:id="@+id/textView4"
-                                        android:layout_centerVertical="true"
-                                        android:layout_alignParentLeft="true"
-                                        android:layout_alignParentStart="true" />
+                                        <TextView
+                                            android:id="@+id/date"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="10dp"
+                                            android:layout_marginTop="5dp"
+                                            android:layout_toRightOf="@+id/qty"
+                                            android:textSize="15sp"
+                                            android:textStyle="bold" />
 
-                                </RelativeLayout>
+                                        <Spinner
+                                            android:id="@+id/UOMspinner"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentLeft="true"
+                                            android:layout_alignParentStart="true"
+                                            android:layout_below="@+id/textView4"
+                                            android:drawSelectorOnTop="true" />
 
-                            </android.support.v7.widget.CardView>
+                                        <TextView
+                                            android:id="@+id/textView3"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentLeft="true"
+                                            android:layout_alignParentStart="true"
+                                            android:layout_alignParentTop="true"
+                                            android:text="Quantity"
+                                            android:textStyle="bold" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="20dp"
-                                android:text=" "
-                                android:textStyle="bold" />
+                                        <TextView
+                                            android:id="@+id/textView4"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_alignParentLeft="true"
+                                            android:layout_alignParentStart="true"
+                                            android:layout_below="@+id/qty"
+                                            android:layout_centerVertical="true"
+                                            android:text="UOM"
+                                            android:textStyle="bold" />
 
-                            <ImageButton
-                                android:id="@+id/cfsave"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:layout_gravity="center"
-                                android:layout_marginTop="10dp"
-                                android:background="@drawable/bgsubmit"
-                                android:padding="10dp"
-                                android:src="@drawable/submit" />
-                        </LinearLayout>
+                                    </RelativeLayout>
 
+                                </android.support.v7.widget.CardView>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="20dp"
+                                    android:text=" "
+                                    android:textStyle="bold" />
+
+                                <ImageButton
+                                    android:id="@+id/add"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:layout_gravity="right"
+                                    android:layout_marginTop="5dp"
+                                    android:background="@drawable/bgsubmit"
+                                    android:padding="10dp"
+                                    android:src="@drawable/ic_add_white_24dp" />
+                            </LinearLayout>
+
+
+                        </android.support.v7.widget.CardView>
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <android.support.v7.widget.RecyclerView
+                                android:id="@+id/rv"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                        </RelativeLayout>
+
+                        <ImageButton
+                            android:id="@+id/save"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/approve"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_done_white_36dp" />
                     </LinearLayout>
+
 
                 </android.support.v7.widget.CardView>
 
             </LinearLayout>
-            <LinearLayout
-                android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#f1f1f1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="List product"
-                    android:textStyle="bold" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2px"
-                    android:background="#000" />
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginRight="16dp"
-                        android:padding="3dp"
-                        android:src="@drawable/approval" />
-                    <TextView
-                        android:textStyle="bold"
-                        android:id="@+id/tgl_list"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rvproduct"
-                    android:layout_width="match_parent"
-                    android:layout_height="400dp"
-                    android:layout_marginTop="10dp" />
-
-            </LinearLayout>
-        </LinearLayout>
     </ScrollView>
 </LinearLayout>

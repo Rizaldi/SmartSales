@@ -72,9 +72,9 @@ public class CustomerAging extends AppCompatActivity {
         db = new SqliteHandler(this);
         HashMap<String, String> user = db.getUserDetails();
         positionstatus = user.get("position_status");
+        employeeId = user.get("employee_id");
         if (positionstatus.equals("1")) {
             manager.setVisibility(View.GONE);
-            employeeId = user.get("employee_id");
         } else {
             getDataSales();
             selectSpinner();

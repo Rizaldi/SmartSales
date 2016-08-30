@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Sales.invoicepayment.DetailInvoice"
+    tools:showIn="@layout/activity_detail_invoice">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#e4e4e4"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:text="Customer Name"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=":" />
+
+                    <TextView
+                        android:id="@+id/customername"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Payment Method:" />
+
+                <RadioGroup
+                    android:id="@+id/checkfirst"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/cash"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onRadioButtonClicked"
+                        android:text="Cash" />
+
+                    <RadioButton
+                        android:id="@+id/cheque"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:onClick="onRadioButtonClicked"
+                        android:text="Cheque" />
+
+                    <RadioButton
+                        android:id="@+id/transfer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:onClick="onRadioButtonClicked"
+                        android:text="Transfer" />
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/ref"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reference Number:" />
+
+                <LinearLayout
+                    android:id="@+id/showhide"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/refnumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <View
+                        android:layout_width="40dp"
+                        android:layout_height="1dp" />
+
+                    <ImageView
+                        android:id="@+id/addPhoto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/approve"
+                        android:padding="10dp"
+                        android:src="@drawable/camera" />
+                </LinearLayout>
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/placeImage"
+                    android:padding="3dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/image"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Payment:" />
+
+                <EditText
+                    android:id="@+id/payment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"/>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:elevation="3dp"
+            app:cardCornerRadius="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+
+</LinearLayout>

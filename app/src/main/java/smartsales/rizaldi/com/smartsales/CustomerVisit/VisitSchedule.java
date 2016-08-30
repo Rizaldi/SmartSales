@@ -46,7 +46,7 @@ public class VisitSchedule extends Fragment {
     TextView tgl;
     String tanggal;
     String bulan;
-    String tahun,date;
+    String tahun, date;
     int year_x, month_x, day_x;
     static final int Dialog_Id = 0;
     FragmentActivity c;
@@ -55,6 +55,7 @@ public class VisitSchedule extends Fragment {
     List<List_Schedule> scheduleList;
     RecyclerView rv;
     RVAadapter adapter;
+
     public VisitSchedule() {
 
     }
@@ -70,11 +71,11 @@ public class VisitSchedule extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.visit_schedule, container, false);
         c = getActivity();
-        db=new SqliteHandler(c);
-        HashMap<String,String> user=db.getUserDetails();
-        sales_id=user.get("employee_id");
-        scheduleList=new ArrayList<>();
-        rv = (RecyclerView)v.findViewById(R.id.listCustomer);
+        db = new SqliteHandler(c);
+        HashMap<String, String> user = db.getUserDetails();
+        sales_id = user.get("employee_id");
+        scheduleList = new ArrayList<>();
+        rv = (RecyclerView) v.findViewById(R.id.listCustomer);
         rv.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         rv.setLayoutManager(llm);
@@ -85,20 +86,19 @@ public class VisitSchedule extends Fragment {
         weekday = new DateFormatSymbols().getWeekdays()[today.weekDay + 1];
         month = new DateFormatSymbols().getMonths()[today.month];
         tgl = (TextView) v.findViewById(R.id.tvdate);
-        Toast.makeText(getContext(),date,Toast.LENGTH_LONG).show();
-        date= DateToday.dateNow();
+        date = DateToday.dateNow();
         tgl.setText(weekday + ", " + today.monthDay + " " + month + " " + today.year);
 
         try {
             Bundle b = c.getIntent().getExtras();
             tanggal = b.getString("tanggal");
-            bulan=b.getString("bulan");
-            tahun=b.getString("tahun");
-            String tbulan="", ttanggal="";
-            if (Integer.parseInt(bulan) < 10 ) {
-                tbulan = "0" + (Integer.parseInt(bulan)+1);
+            bulan = b.getString("bulan");
+            tahun = b.getString("tahun");
+            String tbulan = "", ttanggal = "";
+            if (Integer.parseInt(bulan) < 10) {
+                tbulan = "0" + (Integer.parseInt(bulan) + 1);
             } else {
-                tbulan = String.valueOf(Integer.parseInt(bulan)+1);
+                tbulan = String.valueOf(Integer.parseInt(bulan) + 1);
             }
             if (Integer.parseInt(tanggal) < 10) {
                 ttanggal = "0" + tanggal;
@@ -107,7 +107,7 @@ public class VisitSchedule extends Fragment {
             }
 
             if (!tanggal.isEmpty()) {
-                date=tahun+"-"+tbulan+"-"+ttanggal;
+                date = tahun + "-" + tbulan + "-" + ttanggal;
                 tgl.setText(date);
             }
         } catch (Exception e) {
@@ -115,7 +115,7 @@ public class VisitSchedule extends Fragment {
         }
 //            getlist data
 
-        getData(date,sales_id);
+        getData(date, sales_id);
 
         FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fabcalender);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -126,28 +126,44 @@ public class VisitSchedule extends Fragment {
                 getActivity().finish();
             }
         });
+        FloatingActionButton add = (FloatingActionButton) v.findViewById(R.id.add);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addItinerary();
+            }
+        });
         return v;
     }
 
+    private void addItinerary() {
+        Bundle b = new Bundle();
+        b.putString("idsales",sales_id);
+        Intent i=new Intent(c,Add_Itinerary.class);
+        i.putExtras(b);
+        startActivity(i);
+        getActivity().finish();
+    }
+
     private void getData(String date, String sales_id) {
-        String tag_string_req="req_jadwal";
-        final ProgressDialog loading=new ProgressDialog(c);
+        String tag_string_req = "req_jadwal";
+        final ProgressDialog loading = new ProgressDialog(c);
         loading.setMessage("please wait...");
         loading.setCancelable(false);
         loading.show();
 
-        StringRequest strReq=new StringRequest(Request.Method.POST, UrlLib.url_jadwal+date+"&salesId="+sales_id, new Response.Listener<String>() {
+        StringRequest strReq = new StringRequest(Request.Method.POST, UrlLib.url_jadwal + date + "&salesId=" + sales_id, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
                 loading.dismiss();
                 try {
-                    JSONObject jobj=new JSONObject(s);
-                    String code=jobj.getString("code");
-                    if(code.equals("1")){
-                        JSONArray jsonArray=jobj.getJSONArray("data");
+                    JSONObject jobj = new JSONObject(s);
+                    String code = jobj.getString("code");
+                    if (code.equals("1")) {
+                        JSONArray jsonArray = jobj.getJSONArray("data");
                         parseData(jsonArray);
-                    }else{
-                        Toast.makeText(getContext(),jobj.getString("message"),Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getContext(), jobj.getString("message"), Toast.LENGTH_LONG).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -166,11 +182,11 @@ public class VisitSchedule extends Fragment {
     }
 
     private void parseData(JSONArray array) {
-        for (int i=0;i<array.length();i++){
-            List_Schedule Items=new List_Schedule();
-            JSONObject json=null;
-            try{
-                json=array.getJSONObject(i);
+        for (int i = 0; i < array.length(); i++) {
+            List_Schedule Items = new List_Schedule();
+            JSONObject json = null;
+            try {
+                json = array.getJSONObject(i);
                 Items.setCustomer_id(json.getString("customer_id"));
                 Items.setSchedule_id(json.getString("schedule_id"));
                 Items.setCustomer(json.getString("customer"));
@@ -182,7 +198,7 @@ public class VisitSchedule extends Fragment {
 
             scheduleList.add(Items);
         }
-        adapter = new RVAadapter(scheduleList,c);
+        adapter = new RVAadapter(scheduleList, c);
         adapter.setTgl(date);
         rv.setAdapter(adapter);
     }

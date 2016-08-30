@@ -62,4 +62,11 @@
     <string name="title_activity_input_quantity">Input Quantity</string>
     <string name="title_activity_ordered_product_list">Sales Form</string>
     <string name="title_activity_efective_detail">Details</string>
+    <string name="title_activity_invoice_payment">Invoice Payment</string>
+    <string name="title_activity_detail_invoice">Invoice Detail</string>
+    <string name="title_activity_tracking">Tracking</string>
+    <string name="title_activity_picture">Picture</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_activity_productlist">Product List</string>
+    <string name="title_activity_add__itinerary">Add Schedule</string>
 </resources>

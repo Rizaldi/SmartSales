@@ -1,10 +1,12 @@
 package smartsales.rizaldi.com.smartsales.customerorder;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -202,13 +204,19 @@ public class OrderedProductList extends AppCompatActivity implements View.OnClic
                     if (code.equals("1")) {
                         String idSO = jsonObject.getString("idSO");
                         String msg = jsonObject.getString("message");
-                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-                        Intent i=new Intent(OrderedProductList.this,OrderedProductList.class);
-                        Bundle b=new Bundle();
-                        b.putString("idso",ParamInput.idSO);
-                        i.putExtras(b);
-                        startActivity(i);
-                        finish();
+                        AlertDialog.Builder builder=new AlertDialog.Builder(OrderedProductList.this);
+                        builder.setTitle("Message").setMessage(msg).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent i=new Intent(OrderedProductList.this,OrderedProductList.class);
+                                Bundle b=new Bundle();
+                                b.putString("idso",ParamInput.idSO);
+                                i.putExtras(b);
+                                startActivity(i);
+                                finish();
+                            }
+                        });
+                        builder.show();
                     } else {
                         String msg = jsonObject.getString("message");
                         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();

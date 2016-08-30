@@ -37,45 +37,78 @@
                         android:orientation="vertical"
                         android:padding="15dp">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Category"
-                            android:textStyle="bold" />
-
-                        <Spinner
-                            android:id="@+id/category"
+                        <LinearLayout
+                            android:id="@+id/notcustomervisit"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:drawSelectorOnTop="true" />
+                            android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Customer Name"
-                            android:textStyle="bold" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Category"
+                                android:textStyle="bold" />
 
-                        <Spinner
-                            android:id="@+id/customername"
+                            <Spinner
+                                android:id="@+id/category"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawSelectorOnTop="true" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Customer Name"
+                                android:textStyle="bold" />
+
+                            <Spinner
+                                android:id="@+id/customername"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawSelectorOnTop="true" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:text="Address"
+                                android:textStyle="bold" />
+
+                            <Spinner
+                                android:id="@+id/address"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawSelectorOnTop="true" />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:visibility="gone"
+                            android:padding="5dp"
+                            android:id="@+id/fromcustomervisit"
+                            android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:drawSelectorOnTop="true" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:text="Address"
-                            android:textStyle="bold" />
-
-                        <Spinner
-                            android:id="@+id/address"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:drawSelectorOnTop="true" />
-
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:textStyle="bold"
+                                android:text="Customer Name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:id="@+id/customer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:textStyle="bold"
+                                android:text="Customer Address"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:id="@+id/addresscustomer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
                         <android.support.v7.widget.CardView
                             android:id="@+id/div"
                             android:layout_width="match_parent"

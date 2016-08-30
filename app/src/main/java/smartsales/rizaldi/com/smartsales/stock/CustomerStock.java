@@ -312,7 +312,7 @@ public class CustomerStock extends AppCompatActivity implements View.OnClickList
         loading.setMessage("please wait...");
         loading.setCancelable(false);
         loading.show();
-        StringRequest strReq = new StringRequest(Request.Method.GET, UrlLib.url_getcustomer + salesId, new Response.Listener<String>() {
+        StringRequest strReq = new StringRequest(Request.Method.GET, UrlLib.url_customer + salesId, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
                 loading.dismiss();

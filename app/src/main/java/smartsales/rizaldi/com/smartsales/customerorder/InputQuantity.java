@@ -2,10 +2,12 @@ package smartsales.rizaldi.com.smartsales.customerorder;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -45,10 +47,14 @@ public class InputQuantity extends AppCompatActivity {
     EditText qty;
     Spinner uom;
     List<ModelUom> uomList;
-    String organizationId = "", hargauom = "", uomId = "", productId = "",position_status = "", username = "", idSO = "";
+    String organizationId = "", hargauom = "", uomId = "", productId = "", position_status = "", username = "", idSO = "";
     SqliteHandler db;
     ImageButton ibsave;
+    static TextView totalharga;
 
+    public static TextView getTextView() {
+        return totalharga;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +103,7 @@ public class InputQuantity extends AppCompatActivity {
 
 
     }
+
     private void saveData(final String organizationIdparam, final String idcustomerparam, final String idparam, final String uomIdparam, final String priceparam,
                           final String qtyparam, final String position_statusparam, final String usernameparam) {
         final ProgressDialog loading = new ProgressDialog(this);
@@ -114,17 +121,23 @@ public class InputQuantity extends AppCompatActivity {
                     String code = jsonObject.getString("code");
                     if (code.equals("1")) {
                         idSO = jsonObject.getString("idSO");
-                        ParamInput.idSO=idSO;
-                        ParamInput.anydata=true;
+                        ParamInput.idSO = idSO;
+                        ParamInput.anydata = true;
                         String msg = jsonObject.getString("message");
-                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-                        Intent i=new Intent(InputQuantity.this,OrderedProductList.class);
-                        Bundle b=new Bundle();
-                        b.putString("idso",idSO);
-                        i.putExtras(b);
-                        startActivity(i);
-                        finish();
-                    }else if(code.equals("0")) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(InputQuantity.this);
+                        builder.setTitle("Message").setMessage(msg).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent i = new Intent(InputQuantity.this, OrderedProductList.class);
+                                Bundle b = new Bundle();
+                                b.putString("idso", idSO);
+                                i.putExtras(b);
+                                startActivity(i);
+                                finish();
+                            }
+                        });
+                        builder.show();
+                    } else if (code.equals("0")) {
                         String msg = jsonObject.getString("message");
                         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                     }
@@ -145,6 +158,14 @@ public class InputQuantity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
+//                Log.e("organizationId", organizationIdparam);
+//                Log.e("customerId", idcustomerparam);
+//                Log.e("productId", idparam);
+//                Log.e("uomId", uomIdparam);
+//                Log.e("harga", priceparam);
+//                Log.e("qty", qtyparam);
+//                Log.e("positionStatus", position_statusparam);
+//                Log.e("username", usernameparam);
                 params.put("organizationId", organizationIdparam);
                 params.put("customerId", idcustomerparam);
                 params.put("productId", idparam);

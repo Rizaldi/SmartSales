@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.format.Time;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,13 +45,14 @@ public class CustomerOnVisit extends Fragment {
     SqliteHandler db;
     FragmentActivity c;
     String sales_id;
-    List<ModelListOnVisit> scheduleList;
+//    List<ModelListOnVisit> scheduleList;
     String date;
     TextView schedule_id, visiting, customer_id, customer, customer_address;
     ImageButton chekout, view,salesorder;
     String image = "";
     ImageView iv;
     boolean viewImage = true;
+    String idlocation="";
     String getdata = "";
     LinearLayout place,nodata;
     public CustomerOnVisit() {
@@ -78,8 +80,15 @@ public class CustomerOnVisit extends Fragment {
         salesorder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(c, C_Order_form.class));
-                getActivity().finish();
+                Bundle b=new Bundle();
+                b.putString("fromonvisit","yes");
+                b.putString("customername",customer.getText().toString());
+                b.putString("customerid",customer_id.getText().toString());
+                b.putString("customeraddres",customer_address.getText().toString());
+                b.putString("idcustomerlocation",idlocation);
+                Intent i=new Intent(c, C_Order_form.class);
+                i.putExtras(b);
+                startActivity(i);
             }
         });
         view.setOnClickListener(new View.OnClickListener() {
@@ -123,7 +132,7 @@ public class CustomerOnVisit extends Fragment {
         db = new SqliteHandler(c);
         HashMap<String, String> user = db.getUserDetails();
         sales_id = user.get("employee_id");
-        scheduleList = new ArrayList<>();
+//        scheduleList = new ArrayList<>();
         Time today = new Time(Time.getCurrentTimezone());
         today.setToNow();
         Calendar cal = Calendar.getInstance();
@@ -157,7 +166,7 @@ public class CustomerOnVisit extends Fragment {
         loading.setMessage("please wait...");
         loading.setCancelable(false);
         loading.show();
-        StringRequest strReq = new StringRequest(Request.Method.POST, UrlLib.url_onvisit + date + "&salesId=" + sales_id + "&status=1", new Response.Listener<String>() {
+        StringRequest strReq = new StringRequest(Request.Method.POST, UrlLib.url_jadwal + date + "&salesId=" + sales_id + "&status=1", new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
                 loading.dismiss();
@@ -199,6 +208,7 @@ public class CustomerOnVisit extends Fragment {
                 customer.setText(json.getString("customer"));
                 customer_address.setText(json.getString("customer_address"));
                 visiting.setText(json.getString("visiting"));
+                idlocation=json.getString("customer_location_id");
                 image = json.getString("url_checkin");
             } catch (JSONException e) {
                 e.printStackTrace();

@@ -31,7 +31,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import smartsales.rizaldi.com.smartsales.R;
-import smartsales.rizaldi.com.smartsales.Sales.Propose.Propose;
 import smartsales.rizaldi.com.smartsales.UrlLib;
 
 public class ProposeSo extends AppCompatActivity {
@@ -163,7 +162,7 @@ private void getData(String key, String value) {
 
 //    getsales
 private void getsales() {
-    final StringRequest strReq = new StringRequest(Request.Method.GET, UrlLib.url_targetsalesrep, new Response.Listener<String>() {
+    final StringRequest strReq = new StringRequest(Request.Method.GET, UrlLib.url_sales, new Response.Listener<String>() {
         @Override
         public void onResponse(String s) {
             JSONArray jsonArray = null;

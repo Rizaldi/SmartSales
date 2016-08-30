@@ -1,10 +1,7 @@
 package smartsales.rizaldi.com.smartsales.salesform;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -31,7 +28,7 @@ import java.util.Map;
 
 import smartsales.rizaldi.com.smartsales.R;
 import smartsales.rizaldi.com.smartsales.UrlLib;
-import smartsales.rizaldi.com.smartsales.customerorder.InputOrderForm;
+import smartsales.rizaldi.com.smartsales.customerorder.OrderedProductList;
 import smartsales.rizaldi.com.smartsales.customerorder.ParamInput;
 import smartsales.rizaldi.com.smartsales.session.SqliteHandler;
 
@@ -150,7 +147,7 @@ public class RVAsalesForm extends RecyclerView.Adapter<RVAsalesForm.ViewHder> {
                         NumberFormat nf = NumberFormat.getInstance();
                         nf.setMaximumFractionDigits(2);
                         ParamInput.TotalHarga=ParamInput.TotalHarga-Double.parseDouble(tot.getText().toString());
-                        InputOrderForm.getTextView().setText(nf.format(ParamInput.TotalHarga));
+                        OrderedProductList.getTextView().setText(nf.format(ParamInput.TotalHarga));
                         removeAt(position);
                     }
                     Snackbar.make(v, jsonObject.getString("message"), Snackbar.LENGTH_LONG).show();

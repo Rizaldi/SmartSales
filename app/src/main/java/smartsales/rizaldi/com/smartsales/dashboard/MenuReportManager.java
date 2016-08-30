@@ -2,8 +2,6 @@ package smartsales.rizaldi.com.smartsales.dashboard;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -16,8 +14,8 @@ import smartsales.rizaldi.com.smartsales.Report.goodreturn.ReportGoodReturn;
 import smartsales.rizaldi.com.smartsales.Report.proposeso.ProposeSo;
 import smartsales.rizaldi.com.smartsales.Report.refilvan.Refillvan;
 import smartsales.rizaldi.com.smartsales.Report.topcustomer.Topcustomer;
+import smartsales.rizaldi.com.smartsales.Report.tracking.Tracking;
 import smartsales.rizaldi.com.smartsales.Report.transaction.Transactionreport;
-import smartsales.rizaldi.com.smartsales.Sales.Propose.Propose;
 
 public class MenuReportManager extends AppCompatActivity implements View.OnClickListener {
     LinearLayout efectivecall,psoreport,transaction,goodreturn,refillvan,customeraging,tracking,top10;
@@ -78,7 +76,7 @@ public class MenuReportManager extends AppCompatActivity implements View.OnClick
             startActivity(new Intent(MenuReportManager.this, CustomerAging.class));
         }
         if(v==tracking){
-
+            startActivity(new Intent(MenuReportManager.this, Tracking.class));
         }
         if(v==top10){
             startActivity(new Intent(MenuReportManager.this, Topcustomer.class));

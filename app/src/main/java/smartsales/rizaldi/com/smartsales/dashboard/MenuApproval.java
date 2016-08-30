@@ -2,8 +2,6 @@ package smartsales.rizaldi.com.smartsales.dashboard;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.format.Time;
@@ -13,7 +11,7 @@ import android.widget.TextView;
 
 import java.text.DateFormatSymbols;
 
-import smartsales.rizaldi.com.smartsales.Approval.Itinerary;
+import smartsales.rizaldi.com.smartsales.Approval.Itenerary.Itinerary;
 import smartsales.rizaldi.com.smartsales.Approval.approvalso.ApprovalSo;
 import smartsales.rizaldi.com.smartsales.Approval.goodreturn.Goodreturnapprove;
 import smartsales.rizaldi.com.smartsales.Approval.refillvan.RefillRequest;

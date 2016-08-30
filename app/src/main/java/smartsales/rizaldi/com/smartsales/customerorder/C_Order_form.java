@@ -21,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -73,6 +74,8 @@ public class C_Order_form extends AppCompatActivity {
     int year_x, month_x, day_x;
     EditText etponumber;
     ImageButton ibnext;
+    LinearLayout notcustomervisit,fromcustomervisit;
+    TextView customer,addresscustomer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +106,23 @@ public class C_Order_form extends AppCompatActivity {
         iniitialVariable();
         category.setFocusable(true);
 //        etponumber.setFocusable(false);
+        try {
+            Bundle b=getIntent().getExtras();
+            if (!b.getString("fromonvisit").isEmpty()){
+                fromcustomervisit.setVisibility(View.VISIBLE);
+                notcustomervisit.setVisibility(View.GONE);
+                customer.setText(b.getString("customername"));
+                addresscustomer.setText(b.getString("customeraddres"));
+                idcustomer=b.getString("customerid");
+                ParamInput.idcustomer=b.getString("customerid");
+                ParamInput.customerLocationId=b.getString("idcustomerlocation");//sementara
+                customerLocationId=b.getString("idcustomerlocation");
+
+            }
+        }catch (Exception e){
+
+        }
+
         getDataCustomer("","");
 
         getDataCategory();
@@ -111,11 +131,12 @@ public class C_Order_form extends AppCompatActivity {
         showDialogClick();
         showDialogClickPOdate();
         if(position_status.equals("2")){
-            etponumber.setFocusable(false);
             tvdeliverdate.setText(DateToday.dateNowSlash());
             tvpodate.setText(DateToday.dateNowSlash());
             ontime.setSelected(true);
             deliveristatus = "0";
+            DeliveryDate=DateToday.dateNowSlash();
+            PoDate=DateToday.dateNowSlash();
         }
     }
 
@@ -195,6 +216,10 @@ public class C_Order_form extends AppCompatActivity {
     };
 
     private void iniitialVariable() {
+        notcustomervisit=(LinearLayout) findViewById(R.id.notcustomervisit);
+        fromcustomervisit=(LinearLayout) findViewById(R.id.fromcustomervisit);
+        customer=(TextView) findViewById(R.id.customer);
+        addresscustomer=(TextView) findViewById(R.id.addresscustomer);
         category = (Spinner) findViewById(R.id.category);
         customername = (Spinner) findViewById(R.id.customername);
         address = (Spinner) findViewById(R.id.address);
@@ -224,6 +249,7 @@ public class C_Order_form extends AppCompatActivity {
             public void onClick(View v) {
                 if (!idcustomer.equals("-1") && !customerLocationId.equals("-1")
                         && !deliveristatus.isEmpty() && !DeliveryDate.isEmpty() && !PoDate.isEmpty()) {
+
                     ParamInput.idcustomer = idcustomer;
                     ParamInput.customerLocationId = customerLocationId;
                     ParamInput.deliveristatus = deliveristatus;
@@ -281,7 +307,7 @@ public class C_Order_form extends AppCompatActivity {
 
     private void placeholderCategory() {
         ModelCategory placeholder = new ModelCategory();
-        placeholder.setNamaCategory("Pilih Category");
+        placeholder.setNamaCategory("choose Category");
         placeholder.setIdCategory("-1");
         listcategory.add(placeholder);
     }
@@ -405,7 +431,7 @@ public class C_Order_form extends AppCompatActivity {
 
     private void placeholderSpinner() {
         ModelCustomerItinerary Placeholder = new ModelCustomerItinerary();
-        Placeholder.setNama_customer("Pilih Customer");
+        Placeholder.setNama_customer("choose customername");
         Placeholder.setId_customer("-1");
         modelCustomer.add(Placeholder);
     }
@@ -515,7 +541,7 @@ public class C_Order_form extends AppCompatActivity {
 
     private void placeholderLocation() {
         ModelCustomerLocation Placeholder = new ModelCustomerLocation();
-        Placeholder.setLokasi("Pilih Lokasi");
+        Placeholder.setLokasi("Choose Location");
         Placeholder.setIdlokasi("-1");
         mlocation.add(Placeholder);
     }

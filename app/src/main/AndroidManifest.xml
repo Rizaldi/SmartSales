@@ -57,35 +57,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".Sales.Propose.BrowseProductPropose"
             android:label="@string/title_activity_main"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Approval.Itinerary"
+            android:name=".Approval.Itenerary.Itinerary"
             android:label="@string/title_activity_main"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Approval.Approval"
-            android:label="@string/title_activity_main"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Approval.IteneraryInput"
-            android:label="@string/title_activity_main"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Sales.Tracking.Tracking"
-            android:label="@string/title_activity_main"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Approval.ItineraryAdd"
-            android:label="@string/title_activity_main"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+
         <!--
              ATTENTION: This was auto-generated to add Google Play services to your project for
              App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -105,10 +86,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".Sales.Tracking.MapsTracking"
-            android:label="@string/title_activity_maps_tracking"
-            android:screenOrientation="portrait" />
         <activity
             android:name=".CustomerVisit.CustomerVisit"
             android:label="@string/title_activity_customer_visit"
@@ -132,190 +109,244 @@
         <activity
             android:name=".CustomerVisit.VisitVanSeles"
             android:label="@string/title_activity_visit_van_seles"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Sales.reffill_van.RefillVan"
             android:label="@string/title_activity_reffil_van"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Sales.good_return.GoodsReturn"
             android:label="@string/title_activity_goods_return"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".customerorder.C_Order_form"
             android:label="@string/title_activity_c__order_form"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".customerorder.BrowseProduct"
             android:label="@string/title_activity_browse_product"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".customerorder.InputOrderForm"
-            android:label="@string/title_activity_input_order_form"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".customerorder.Payment"
             android:label="@string/title_activity_payment"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Sales.Propose.Payment"
             android:label="@string/title_activity_payment"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Approval.approvalso.ApprovalSo"
             android:label="@string/title_activity_approval_so"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Approval.approvalso.ListApprovalSales"
             android:label="@string/title_activity_list_approval_sales"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Report.ActivityReport"
-            android:label="@string/title_activity_activity_report"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Report.transaction.Transactionreport"
             android:label="@string/title_activity_transactionreport"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Report.transaction.DetailTransaction"
             android:label="@string/title_activity_detail_transaction"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Report.topcustomer.Topcustomer"
             android:label="@string/title_activity_topcustomer"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Report.goodreturn.ReportGoodReturn"
             android:label="@string/title_activity_report_good_return"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".dashboard.DashboardSales"
             android:label="@string/title_activity_dashboard_sales"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".dashboard.MenuSales"
             android:label="@string/title_activity_menu_sales"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".dashboard.MenuStock"
             android:label="@string/title_activity_menu_stock"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".dashboard.MenuReport"
             android:label="@string/title_activity_menu_report"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".dashboard.MenuApproval"
             android:label="@string/title_activity_menu_approval"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".dashboard.MenuManager"
             android:label="@string/title_activity_menu_manager"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".dashboard.MenuReportManager"
             android:label="@string/title_activity_menu_report_manager"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Sales.competitor.CompetitorActivity"
             android:label="@string/title_activity_competitor"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Sales.competitor.AddCompetitor"
             android:label="@string/title_activity_add_competitor"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Sales.salestarget.Salestarget"
             android:label="@string/title_activity_salestarget"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".stock.StockBalance"
             android:label="@string/title_activity_stock_balance"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Sales.Propose.ProposeSalesOrder"
             android:label="@string/title_activity_propose_sales_order"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Report.proposeso.ProposeSo"
             android:label="@string/title_activity_propose_so"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Report.proposeso.DetailPropose"
             android:label="@string/title_activity_detail_propose"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Report.goodreturn.Productlist"
             android:label="@string/title_activity_productlist"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Report.refilvan.Refillvan"
             android:label="@string/title_activity_refillvan"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Report.refilvan.Detailrefill"
             android:label="@string/title_activity_detailrefill"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Approval.refillvan.RefillRequest"
             android:label="@string/title_activity_refill_request"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Sales.Propose.InputOrderForm"
-            android:label="@string/title_activity_input_order_form"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".Sales.Propose.BrowseProduct"
-            android:label="@string/title_activity_browse_product"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Approval.refillvan.ApproveDetailrefill"
             android:label="@string/title_activity_approve_detailrefill"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Approval.goodreturn.Goodreturnapprove"
             android:label="@string/title_activity_goodreturnapprove"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Approval.goodreturn.GoodreturnDetail"
             android:label="@string/title_activity_goodreturn_detail"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".stock.CustomerStock"
             android:label="@string/title_activity_customer_stock"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Report.customeraging.CustomerAging"
             android:label="@string/title_activity_customer_aging"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Report.customeraging.DetailCustomeraging"
             android:label="@string/title_activity_detail_customeraging"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Report.efectivecall.EffectiveCalls"
             android:label="@string/title_activity_effective_calls"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".customerorder.InputQuantity"
             android:label="@string/title_activity_input_quantity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".customerorder.OrderedProductList"
             android:label="@string/title_activity_ordered_product_list"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Report.efectivecall.EfectiveDetail"
             android:label="@string/title_activity_efective_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Sales.Propose.InputQuantityPropose"
             android:label="@string/title_activity_efective_detail"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Sales.Propose.OrderedProductListPropost"
             android:label="@string/title_activity_efective_detail"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Sales.invoicepayment.InvoicePayment"
+            android:label="@string/title_activity_invoice_payment"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Sales.invoicepayment.DetailInvoice"
+            android:label="@string/title_activity_detail_invoice"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Report.tracking.Tracking"
+            android:label="@string/title_activity_tracking"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Report.tracking.Picture"
+            android:label="@string/title_activity_picture"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Report.tracking.MapsActivity"
+            android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".Sales.good_return.Activity_productlist"
+            android:label="@string/title_activity_activity_productlist"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CustomerVisit.Add_Itinerary"
+            android:label="@string/title_activity_add__itinerary"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

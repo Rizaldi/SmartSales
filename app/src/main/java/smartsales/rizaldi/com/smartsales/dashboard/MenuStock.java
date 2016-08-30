@@ -16,6 +16,7 @@ import java.util.HashMap;
 
 import smartsales.rizaldi.com.smartsales.CustomerVisit.CustomerVisit;
 import smartsales.rizaldi.com.smartsales.R;
+import smartsales.rizaldi.com.smartsales.Sales.reffill_van.RefillVan;
 import smartsales.rizaldi.com.smartsales.session.SqliteHandler;
 import smartsales.rizaldi.com.smartsales.stock.CustomerStock;
 import smartsales.rizaldi.com.smartsales.stock.StockBalance;
@@ -74,6 +75,9 @@ public class MenuStock extends AppCompatActivity implements View.OnClickListener
         }
         if(v==customerstock){
             startActivity(new Intent(MenuStock.this, CustomerStock.class));
+        }
+        if(v==refillvan){
+            startActivity(new Intent(MenuStock.this, RefillVan.class));
         }
     }
 }

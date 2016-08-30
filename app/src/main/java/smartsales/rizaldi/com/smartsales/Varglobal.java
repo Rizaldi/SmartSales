@@ -5,4 +5,8 @@ package smartsales.rizaldi.com.smartsales;
  */
 public class Varglobal {
     public static String approvallist="";
+    public static String payment="";
+    public static String arrPayment="";
+    public static String arrGoodreturn="";
+    public static String arrRefillVan="";
 }

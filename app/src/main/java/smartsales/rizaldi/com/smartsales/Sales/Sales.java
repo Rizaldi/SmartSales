@@ -7,7 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
-import smartsales.rizaldi.com.smartsales.Approval.Itinerary;
+import smartsales.rizaldi.com.smartsales.Approval.Itenerary.Itinerary;
 import smartsales.rizaldi.com.smartsales.R;
 import smartsales.rizaldi.com.smartsales.CustomerVisit.CheckInOut;
 import smartsales.rizaldi.com.smartsales.Sales.good_return.GoodsReturn;

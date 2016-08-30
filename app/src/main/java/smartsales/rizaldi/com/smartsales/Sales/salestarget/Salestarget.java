@@ -175,7 +175,7 @@ private void getDataTarget(String idmonth,String key, String value) {
     }
     //    category
     private void getsales() {
-        final StringRequest strReq = new StringRequest(Request.Method.GET, UrlLib.url_targetsalesrep, new Response.Listener<String>() {
+        final StringRequest strReq = new StringRequest(Request.Method.GET, UrlLib.url_sales, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
                 JSONArray jsonArray = null;

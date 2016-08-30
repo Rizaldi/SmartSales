@@ -2,10 +2,15 @@ package smartsales.rizaldi.com.smartsales.Sales.reffill_van;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +23,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -36,21 +42,25 @@ import java.util.Map;
 
 import smartsales.rizaldi.com.smartsales.R;
 import smartsales.rizaldi.com.smartsales.UrlLib;
+import smartsales.rizaldi.com.smartsales.Varglobal;
 import smartsales.rizaldi.com.smartsales.session.SessionManager;
 import smartsales.rizaldi.com.smartsales.session.SqliteHandler;
 
 public class RefillVan extends AppCompatActivity {
     private List<spRefillModel> spRefillModels;
     private List<UOMRefillModel> uomRefillModels;
+    private List<ModelDataRefill> list;
     EditText qty;
-    ImageButton ibsave;
+    ImageButton add, save;
     private SessionManager session;
     SqliteHandler db;
-    Spinner productspinner,uomspinner;
+    Spinner productspinner, uomspinner;
     String organization;
-    String idreffillvan ="-1",product_refillvan="",iduom="-1",uom="";
-
+    String idreffillvan = "-1", product_refillvan = "", iduom = "-1", uom = "";
+    RVAadapter adapter;
     ProgressDialog pDialog;
+    RecyclerView rv;
+    private String warehouseId="",employeId="",username="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,14 +80,18 @@ public class RefillVan extends AppCompatActivity {
 
         session = new SessionManager(getApplicationContext());
         db = new SqliteHandler(getApplicationContext());
-        HashMap<String,String> user=db.getUserDetails();
+        HashMap<String, String> user = db.getUserDetails();
         organization = user.get("organization_id");
+        warehouseId = user.get("warehouse_id");
+        employeId = user.get("employee_id");
+        username = user.get("username");
+
 
         Toast.makeText(RefillVan.this, organization, Toast.LENGTH_SHORT).show();
 
         spRefillModels = new ArrayList<>();
         uomRefillModels = new ArrayList<>();
-
+        list = new ArrayList<>();
         addItemSpinner();
     }
 
@@ -90,9 +104,8 @@ public class RefillVan extends AppCompatActivity {
                 product_refillvan = ((TextView) view.findViewById(R.id.product_refill)).getText().toString();
 
                 try {
-                    getDataUOM(idreffillvan , view);
-                }
-                catch (Exception e){
+                    getDataUOM(idreffillvan, view);
+                } catch (Exception e) {
                     Toast.makeText(RefillVan.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -115,53 +128,120 @@ public class RefillVan extends AppCompatActivity {
 
             }
         });
-        qty = (EditText)findViewById(R.id.qty);
+        qty = (EditText) findViewById(R.id.qty);
 
-        ibsave = (ImageButton) findViewById(R.id.cfsave);
-        ibsave.setOnClickListener(new View.OnClickListener() {
+        save = (ImageButton) findViewById(R.id.save);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (list.size() != 0) {
+                    saveData(v);
+                } else
+                    Toast.makeText(RefillVan.this, "nothing product in list", Toast.LENGTH_LONG).show();
+            }
+        });
+        add = (ImageButton) findViewById(R.id.add);
+        add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addDataRVan(v);
             }
         });
+        rv = (RecyclerView) findViewById(R.id.rv);
+        rv.setHasFixedSize(true);
+        rv.setNestedScrollingEnabled(false);
+        LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
+        rv.setLayoutManager(llm);
+        rv.setFocusable(false);
+
     }
 
-    private void addDataRVan(View v) {
-        final String a = qty.getText().toString();
-
-        if (iduom.equals("-1") || qty.equals("") || idreffillvan.equals("-1")){
-            Snackbar.make(v, "Maaf Data Tidak Boleh Kosong!", Snackbar.LENGTH_LONG).show();
-            return;
-        }
+    private void saveData(final View v) {
         final ProgressDialog loading = new ProgressDialog(this);
         loading.setMessage("please wait...");
         loading.setCancelable(false);
         loading.show();
-        Toast.makeText(RefillVan.this, idreffillvan+iduom+a, Toast.LENGTH_SHORT).show();
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "",
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String s) {
-//                        loading.dismiss();
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError volleyError) {
 
-                    }
-                }){
+        final StringRequest strReq = new StringRequest(Request.Method.POST, UrlLib.url_save_refillvan, new Response.Listener<String>() {
             @Override
-            protected Map<String,String> getParams(){
-                Map<String,String> params = new HashMap<String,String>();
-                params.put("id_refill_van",idreffillvan);
-                params.put("id_uom",iduom);
-                params.put("qty",a);
+            public void onResponse(String s) {
+                loading.dismiss();
+                try {
+                    JSONObject jsonObject = new JSONObject(s);
+                    String code = jsonObject.getString("code");
+                    String msg = jsonObject.getString("message");
+                    if (code.equals("1")) {
+                        AlertDialog.Builder builder=new AlertDialog.Builder(RefillVan.this);
+                        builder.setTitle("Message").setMessage(msg).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                                Varglobal.arrRefillVan="";
+                            }
+                        });
+                        builder.show();
+                    } else {
+                        Snackbar.make(v, msg, Snackbar.LENGTH_LONG).show();
+                    }
+                } catch (JSONException e) {
+                    Log.e("error GC", e.getMessage());
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                NetworkResponse networkResponse = volleyError.networkResponse;
+                Toast.makeText(getApplicationContext(),
+                        volleyError.getMessage(), Toast.LENGTH_LONG).show();
+                loading.dismiss();
+            }
+        }
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("organizationId", organization);
+                params.put("warehouseId", warehouseId);
+                params.put("employeeId", employeId);
+                params.put("username", username);
+                String refillProductOrder = Varglobal.arrRefillVan.substring(0, Varglobal.arrRefillVan.length() - 1);
+                params.put("refillProductOrder", refillProductOrder);
                 return params;
             }
         };
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
+        requestQueue.add(strReq);
+    }
+
+    private void addDataRVan(View v) {
+        if (iduom.equals("-1") || qty.equals("") || idreffillvan.equals("-1")) {
+            Snackbar.make(v, "Maaf Data Tidak Boleh Kosong!", Snackbar.LENGTH_LONG).show();
+            return;
+        }
+        ModelDataRefill items = new ModelDataRefill();
+        items.setProdutId(idreffillvan);
+        items.setProductname(product_refillvan);
+        items.setQty(qty.getText().toString());
+        items.setUomId(iduom);
+        items.setUomname(uom);
+        items.setRefilvan(idreffillvan + ","
+                + qty.getText().toString() + "," +
+                iduom);
+        list.add(items);
+        adapter = new RVAadapter(list, RefillVan.this);
+        rv.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        for (int i = 0; i < list.size(); i++) {
+
+            if (i == 0) {
+                Varglobal.arrRefillVan = list.get(i).getRefilvan() + "|";
+            } else {
+                Varglobal.arrRefillVan = Varglobal.arrRefillVan + list.get(i).getRefilvan() + "|";
+            }
+        }
+        productspinner.setSelection(0);
+        qty.setText("");
+        uomspinner.setSelection(0);
     }
 
     private void getDataUOM(String idreffillvan, View view) {
@@ -185,7 +265,7 @@ public class RefillVan extends AppCompatActivity {
                     public void onErrorResponse(VolleyError volleyError) {
 
                     }
-                }){
+                }) {
 
         };
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -193,7 +273,7 @@ public class RefillVan extends AppCompatActivity {
     }
 
     private void parseDataUOM(JSONArray jsonArray) {
-        for (int i = 0; i<jsonArray.length(); i++){
+        for (int i = 0; i < jsonArray.length(); i++) {
             UOMRefillModel uomRefillModel = new UOMRefillModel();
             try {
                 JSONObject a = (JSONObject) jsonArray.get(i);
@@ -251,7 +331,7 @@ public class RefillVan extends AppCompatActivity {
                     public void onErrorResponse(VolleyError volleyError) {
 
                     }
-                }){
+                }) {
 
         };
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -260,7 +340,7 @@ public class RefillVan extends AppCompatActivity {
 
     private void parseDataspReffill(JSONArray jsonArray) {
         placeholderSpinnerproductReffill();
-        for (int i = 0; i<jsonArray.length(); i++){
+        for (int i = 0; i < jsonArray.length(); i++) {
             spRefillModel spRefillModel = new spRefillModel();
             JSONObject jsonObject1 = null;
             try {
@@ -316,6 +396,7 @@ public class RefillVan extends AppCompatActivity {
             return getCustomView(position, convertView, parent);
         }
     }
+
     public class UOMAdapter extends ArrayAdapter {
         List<UOMRefillModel> uomRefillModels;
 

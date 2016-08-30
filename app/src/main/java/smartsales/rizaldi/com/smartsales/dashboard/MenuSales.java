@@ -17,6 +17,8 @@ import java.util.HashMap;
 import smartsales.rizaldi.com.smartsales.R;
 import smartsales.rizaldi.com.smartsales.Sales.Propose.ProposeSalesOrder;
 import smartsales.rizaldi.com.smartsales.Sales.competitor.CompetitorActivity;
+import smartsales.rizaldi.com.smartsales.Sales.good_return.GoodsReturn;
+import smartsales.rizaldi.com.smartsales.Sales.invoicepayment.InvoicePayment;
 import smartsales.rizaldi.com.smartsales.Sales.salestarget.Salestarget;
 import smartsales.rizaldi.com.smartsales.customerorder.C_Order_form;
 import smartsales.rizaldi.com.smartsales.session.SqliteHandler;
@@ -91,6 +93,12 @@ public class MenuSales extends AppCompatActivity implements View.OnClickListener
                 break;
             case R.id.pso:
                 startActivity(new Intent(MenuSales.this, ProposeSalesOrder.class));
+                break;
+            case R.id.payment:
+                startActivity(new Intent(MenuSales.this, InvoicePayment.class));
+                break;
+            case R.id.goods:
+                startActivity(new Intent(MenuSales.this, GoodsReturn.class));
                 break;
         }
     }

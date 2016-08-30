@@ -62,7 +62,7 @@ public class InputQuantityPropose extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(InputQuantityPropose.this, BrowseProduct.class));
+                startActivity(new Intent(InputQuantityPropose.this, BrowseProductPropose.class));
                 finish();
             }
         });

@@ -354,7 +354,7 @@ public class OrderedProductListPropost extends AppCompatActivity implements View
                 break;
             case R.id.add:
                 ParamInput.idSO = idSO;
-                startActivity(new Intent(OrderedProductListPropost.this, BrowseProduct.class));
+                startActivity(new Intent(OrderedProductListPropost.this, BrowseProductPropose.class));
                 finish();
                 break;
             case R.id.payment:

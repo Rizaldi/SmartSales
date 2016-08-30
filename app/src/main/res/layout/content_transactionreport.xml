@@ -117,9 +117,9 @@
 
                         <RelativeLayout
                             android:id="@+id/enddate"
-                            android:layout_marginTop="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
                             android:background="#fff"
                             android:padding="10dp">
 
@@ -165,14 +165,13 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#fff"
-                        android:padding="10dp">
+                        android:layout_height="wrap_content">
 
                         <android.support.v7.widget.RecyclerView
                             android:id="@+id/rv"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:background="#efefef" />
 
                     </LinearLayout>
 

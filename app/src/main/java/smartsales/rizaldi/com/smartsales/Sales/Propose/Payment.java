@@ -1,8 +1,10 @@
 package smartsales.rizaldi.com.smartsales.Sales.Propose;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -130,7 +132,6 @@ public class Payment extends AppCompatActivity implements View.OnClickListener {
                 loading.dismiss();
                 JSONArray jsonArray = null;
                 try {
-                    Log.e("Json",s);
                     JSONObject jsonObject = new JSONObject(s);
                     String code = jsonObject.getString("code");
                     String msg = jsonObject.getString("message");
@@ -144,10 +145,14 @@ public class Payment extends AppCompatActivity implements View.OnClickListener {
                         ParamInput.PoDate="";
                         ParamInput.TotalHarga=0.0;
                         ParamInput.PoNumber="";
-//                        kembali=payment-totalPayment;
-//                        change.setText(String.valueOf(kembali));
-                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-                        finish();
+                        AlertDialog.Builder builder=new AlertDialog.Builder(Payment.this);
+                        builder.setTitle("Message").setMessage(msg).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                            }
+                        });
+                        builder.show();
                     } else {
                         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                     }

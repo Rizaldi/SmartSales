@@ -108,7 +108,7 @@ public class VanSelesList extends Fragment {
         loading.setCancelable(false);
         loading.show();
 
-        StringRequest strReq=new StringRequest(Request.Method.GET, UrlLib.url_listvansales+sales_id, new Response.Listener<String>() {
+        StringRequest strReq=new StringRequest(Request.Method.GET, UrlLib.url_customer+sales_id, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
                 loading.dismiss();

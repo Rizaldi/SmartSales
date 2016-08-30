@@ -103,11 +103,9 @@ public class RVAApprovalrefill extends RecyclerView.Adapter<RVAApprovalrefill.Vi
                                        +list_product.get(getPosition()).getProductid()+","+
                                        orderqty.getText()+","+approvedqty.getText()
                                        );
+                                items.setPosition(getPosition());
                             list.add(items);
                             for (int i=0;i<list.size();i++){
-//                                if(i==0 && list.size()==1){
-//                                    Varglobal.approvallist=list.get(i).getApprovalList();
-//                                }
                                 if(i==0){
                                     Varglobal.approvallist=list.get(i).getApprovalList()+"|";
                                 }else{
@@ -116,8 +114,21 @@ public class RVAApprovalrefill extends RecyclerView.Adapter<RVAApprovalrefill.Vi
                             }
                         }
                     }else{
-                        list.clear();
-                        Varglobal.approvallist="";
+                        for (int i = 0; i < list.size(); i++) {
+                            if (list.get(i).getPosition() == getPosition()) {
+                                list.remove(i);
+                                Varglobal.approvallist = "";
+                            }
+                        }
+                        for (int j = 0; j < list.size(); j++) {
+
+                            if (j == 0) {
+                                Varglobal.approvallist = list.get(j).getApprovalList() + "|";
+                            } else {
+                                Varglobal.approvallist = Varglobal.approvallist + list.get(j).getApprovalList() + "|";
+                            }
+                        }
+
                     }
 
                 }

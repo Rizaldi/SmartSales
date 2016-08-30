@@ -1,11 +1,15 @@
 package smartsales.rizaldi.com.smartsales.customerorder;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -36,9 +40,12 @@ public class Payment extends AppCompatActivity implements View.OnClickListener {
     SqliteHandler db;
     EditText qtypayment;
     TextView total, change;
-    private String organizationId = "", warehouseId = "", position_status = "", username = "", employee_id = "",idSo="";
+    private String organizationId = "", warehouseId = "", position_status = "", username = "", employee_id = "", idSo = "";
     ImageButton ibsave;
-    Double kembali=0.0,totalPayment=0.0,payment=0.0;
+    double kembali = 0.0;
+    Double totalPayment = 0.0;
+    Double payment = 0.0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +59,7 @@ public class Payment extends AppCompatActivity implements View.OnClickListener {
         ibsave.setOnClickListener(this);
         Bundle b = getIntent().getExtras();
         total.setText(b.getString("total"));
-        idSo=b.getString("idSo");
+        idSo = b.getString("idSo");
         db = new SqliteHandler(this);
         HashMap<String, String> user = db.getUserDetails();
         organizationId = user.get("organization_id");
@@ -60,28 +67,30 @@ public class Payment extends AppCompatActivity implements View.OnClickListener {
         position_status = user.get("position_status");
         username = user.get("username");
         employee_id = user.get("employee_id");
-        if(position_status.equals("1")){
+        if (position_status.equals("1")) {
             qtypayment.setText(b.getString("total"));
             qtypayment.setFocusable(false);
             change.setText("0");
         }
-//        qtypayment.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                kembali=Integer.parseInt(total.getText().toString())-Integer.parseInt(String.valueOf(s));
-//                change.setText(kembali);
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable s) {
-//
-//            }
-//        });
+        qtypayment.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (!s.toString().isEmpty()) {
+                    kembali = Double.parseDouble(String.valueOf(s)) - Double.parseDouble(total.getText().toString());
+                    change.setText(String.valueOf(kembali));
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
     }
 
@@ -89,16 +98,17 @@ public class Payment extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ibsave:
-                if(!qtypayment.getText().toString().isEmpty()){
-                    payment=Double.parseDouble(qtypayment.getText().toString());
-                    totalPayment=Double.parseDouble(total.getText().toString());
-                    if(payment>=totalPayment){
+                if (!qtypayment.getText().toString().isEmpty()) {
+                    payment = Double.parseDouble(qtypayment.getText().toString());
+                    totalPayment = Double.parseDouble(total.getText().toString());
+                    if (payment >= totalPayment) {
+//                        Toast.makeText(Payment.this, ParamInput.deliveristatus+"-"+ParamInput.DeliveryDate+"-"+total.getText().toString(), Toast.LENGTH_SHORT).show();
                         saveSalesOrder();
-                    }else{
-                        Snackbar.make(v,"check payment",Snackbar.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(Payment.this, "check payment", Toast.LENGTH_SHORT).show();
                     }
-                }else{
-                    Snackbar.make(v,"fill payment",Snackbar.LENGTH_LONG).show();
+                } else {
+                    Snackbar.make(v, "fill payment", Snackbar.LENGTH_LONG).show();
                 }
                 break;
         }
@@ -115,25 +125,29 @@ public class Payment extends AppCompatActivity implements View.OnClickListener {
                 loading.dismiss();
                 JSONArray jsonArray = null;
                 try {
-                    Log.e("Json",s);
+                    Log.e("Json", s);
                     JSONObject jsonObject = new JSONObject(s);
                     String code = jsonObject.getString("code");
                     String msg = jsonObject.getString("message");
                     if (code.equals("1")) {
-                        ParamInput.idcustomer="";
-                        ParamInput.customerLocationId="";
-                        ParamInput.idSO="";
-                        ParamInput.anydata=false;
-                        ParamInput.deliveristatus="";
-                        ParamInput.DeliveryDate="";
-                        ParamInput.PoDate="";
-                        ParamInput.TotalHarga=0.0;
-                        ParamInput.PoNumber="";
-//                        kembali=payment-totalPayment;
-//                        change.setText(String.valueOf(kembali));
-                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(Payment.this,C_Order_form.class));
-                        finish();
+                        ParamInput.idcustomer = "";
+                        ParamInput.customerLocationId = "";
+                        ParamInput.idSO = "";
+                        ParamInput.anydata = false;
+                        ParamInput.deliveristatus = "";
+                        ParamInput.DeliveryDate = "";
+                        ParamInput.PoDate = "";
+                        ParamInput.TotalHarga = 0.0;
+                        ParamInput.PoNumber = "";
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Payment.this);
+                        builder.setTitle("Message").setMessage(msg).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                startActivity(new Intent(Payment.this, C_Order_form.class));
+                                finish();
+                            }
+                        });
+                        builder.show();
                     } else {
                         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
                     }
@@ -162,12 +176,12 @@ public class Payment extends AppCompatActivity implements View.OnClickListener {
                 params.put("employeeId", employee_id);
                 params.put("positionStatus", position_status);
                 params.put("username", username);
-                params.put("idSO",idSo );
-                params.put("poNumber",ParamInput.PoNumber );
-                params.put("poDate",ParamInput.PoDate );
-                params.put("deliveryStatus",ParamInput.deliveristatus );
-                params.put("deliveryDate",ParamInput.DeliveryDate );
-                params.put("payment",qtypayment.getText().toString() );
+                params.put("idSO", ParamInput.idSO);
+                params.put("deliveryStatus", ParamInput.deliveristatus);
+                params.put("deliveryDate", ParamInput.DeliveryDate);
+                params.put("poNumber", ParamInput.PoNumber);
+                params.put("poDate", ParamInput.PoDate);
+                params.put("payment", total.getText().toString());
                 return params;
             }
         };

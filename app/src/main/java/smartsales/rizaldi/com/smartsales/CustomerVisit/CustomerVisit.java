@@ -34,8 +34,6 @@ public class CustomerVisit extends AppCompatActivity {
             }
         });
         initialVariable();
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        initializeCalendar();
     }
 
     private void initialVariable() {

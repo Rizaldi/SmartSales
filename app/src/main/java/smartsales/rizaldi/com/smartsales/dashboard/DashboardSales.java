@@ -2,15 +2,12 @@ package smartsales.rizaldi.com.smartsales.dashboard;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.format.Time;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,8 +18,6 @@ import smartsales.rizaldi.com.smartsales.CustomerVisit.CustomerVisit;
 import smartsales.rizaldi.com.smartsales.CustomerVisit.VisitVanSeles;
 import smartsales.rizaldi.com.smartsales.LoginActivity;
 import smartsales.rizaldi.com.smartsales.R;
-import smartsales.rizaldi.com.smartsales.Report.ActivityReport;
-import smartsales.rizaldi.com.smartsales.Sales.Sales;
 import smartsales.rizaldi.com.smartsales.session.SessionManager;
 import smartsales.rizaldi.com.smartsales.session.SqliteHandler;
 

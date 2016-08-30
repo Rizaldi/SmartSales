@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Sales.Propose.BrowseProduct"
+    tools:context=".Sales.Propose.BrowseProductPropose"
     tools:showIn="@layout/activity_browse_product2">
 
     <ScrollView
         android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:fillViewport="true">
 
         <LinearLayout
@@ -110,7 +110,7 @@
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rvproductlist"
                     android:layout_width="match_parent"
-                    android:layout_height="400dp"
+                    android:layout_height="match_parent"
                     android:layout_marginTop="10dp" />
 
             </LinearLayout>

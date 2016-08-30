@@ -122,7 +122,7 @@ public class ProposeSalesOrder extends AppCompatActivity implements View.OnClick
         if(v==next){
             ParamInput.idcustomer=id_customer;
             ParamInput.customerLocationId=id_addres;
-            Intent i=new Intent(ProposeSalesOrder.this,BrowseProduct.class);
+            Intent i=new Intent(ProposeSalesOrder.this,BrowseProductPropose.class);
             startActivity(i);
         }
     }
@@ -160,7 +160,7 @@ public class ProposeSalesOrder extends AppCompatActivity implements View.OnClick
         }
     }
     private void getCategory() {
-        final StringRequest strReq = new StringRequest(Request.Method.GET, UrlLib.url_getcategory+organizationId+"&salesId="+salesId, new Response.Listener<String>() {
+        final StringRequest strReq = new StringRequest(Request.Method.GET, UrlLib.url_category+organizationId+"&salesId="+salesId, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
                 JSONArray jsonArray = null;
@@ -303,7 +303,7 @@ private void selectCustomername() {
         }
     }
     private void getCustomer(String key,String value) {
-        final StringRequest strReq = new StringRequest(Request.Method.GET, UrlLib.url_getcustomer+salesId+"&"+key+"="+value, new Response.Listener<String>() {
+        final StringRequest strReq = new StringRequest(Request.Method.GET, UrlLib.url_customer+salesId+"&"+key+"="+value, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
                 JSONArray jsonArray = null;
@@ -412,7 +412,7 @@ private void selectAddress() {
         }
     }
     private void getAddress(String customerId) {
-        final StringRequest strReq = new StringRequest(Request.Method.GET, UrlLib.url_getaddress+customerId, new Response.Listener<String>() {
+        final StringRequest strReq = new StringRequest(Request.Method.GET, UrlLib.url_customerlocation+customerId, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
                 JSONArray jsonArray = null;
